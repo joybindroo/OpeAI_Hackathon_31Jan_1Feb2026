@@ -1,0 +1,5 @@
+openai>=1.0
+yt-dlp>=2025.01.01
+Pillow>=10.0
+streamlit>=1.53.1
+pandas>=2.3.3
