@@ -1,6 +1,8 @@
 # Kids Educational Video Quality Evaluation Agent 
 
-Evaluates short children's educational videos using OpenAI's multimodal stack plus lightweight heuristics.
+Evaluates short children's educational videos using OpenAI's multimodal models.
+
+Performs multimodal analysis of short children’s videos using transcription, frame sampling, heuristics, and rubric-guided LLM reasoning to produce a structured, non-diagnostic assessment; pacing to give an advisory view of a video’s educational quality for children.
 
 
 ## Notes
@@ -11,16 +13,16 @@ Evaluates short children's educational videos using OpenAI's multimodal stack pl
 - Sampling a few representative frames, and
 - Extracting visual information ("gpt-4o-mini"). 
 - Calculates light-weight heuristics (non LLM). lik
-  - word_repetition_ratio
-  - speaking_speed
-  - transcript_density, and
-  - visual_variance (pixel level)
+  - _word_repetition_ratio_
+  - _speaking_speed_
+  - _transcript_density_, and
+  - _visual_variance_ (pixel level)
 - It then combines these signals with the transcript to assess 
-  - visual & speech patterns, 
+**  - visual & speech patterns, 
   - learning value, 
   - potential overstimulation, and 
   - content quality using a 
-  - structured rubric. 
+  - structured rubric.
 - The output is a table with concise advisory bullet points, intended to help parents understand the educational strengths and limitations of the video, while explicitly noting uncertainty.
 - All findings are advisory; no claims of diagnosis or certification.
 
@@ -46,9 +48,13 @@ or
 python3 app.py --api-key api-proj...   --youtube https://www.youtube.com/shorts/ZA9J9Tx17RE
 ```
 ### Command line arguments available:
+
 --youtube, YouTube URL to evaluate
+
 --video, Path to a short local video file (mp4 etc)
+
 --api-key, OpenAI API key (falls back to OPENAI_API_KEY env variable)
+
 --frames, Number of frames to sample
 
 ### For Streamlit based UI
