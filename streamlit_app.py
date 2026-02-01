@@ -5,6 +5,7 @@ import os
 import tempfile
 from pathlib import Path
 from typing import Tuple
+from io import StringIO
 
 from openai import OpenAI
 
@@ -204,21 +205,32 @@ if run_btn:
 
         col1, col2 = st.columns([2, 1])
 
+        res_data=analysis_to_table(analysis)
+
         with col1:
             st.subheader("📊 Evaluation Result")
             # st.table(analysis)
             # st.json(analysis)
             # st.html(analysis)
-            st.table(analysis_to_table(analysis))
+            st.table(res_data)
 
 
         with col2:
-            st.subheader("⬇️ Download Report")
+            st.subheader("⬇️ Download Results")
             st.download_button(
                 "Download JSON",
                 data=json.dumps(analysis, indent=2, ensure_ascii=False),
                 file_name="video_evaluation.json",
                 mime="application/json",
+            )
+            csv_buffer = StringIO()
+            res_data.to_csv(csv_buffer, index=False)
+
+            st.download_button(
+                label="Download CSV",
+                data=csv_buffer.getvalue(),
+                file_name="video_evaluation.csv",
+                mime="text/csv",
             )
 
     except Exception as exc:
