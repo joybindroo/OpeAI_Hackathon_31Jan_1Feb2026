@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+venv/
+*.log
+*.sqlite3
+*.tmp
+*.wav
+*.mp4
+kids-video-eval-*/
+.venv/
