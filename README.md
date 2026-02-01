@@ -12,7 +12,7 @@ Performs multimodal analysis of short children’s videos using transcription, f
 - Then transcribing the audio ("gpt-4o-transcribe"), 
 - Sampling a few representative frames, and
 - Extracting visual information ("gpt-4o-mini"). 
-- Calculates light-weight heuristics (non LLM). lik
+- Calculates light-weight heuristics (non LLM).
   - _word_repetition_ratio_
   - _speaking_speed_
   - _transcript_density_, and
